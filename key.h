@@ -24,14 +24,13 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
-#define LONG_PRESS_INTERVAL 5000  //long press delay
 #define DEBOUNCING 50 //debouncing delay
+#define LONG_PRESS_INTERVAL 5000  //long press delay
 
-#ifdef PULLDOWN
-#define KEY HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_14) ^ 0x01
-#else
-#define KEY HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_14)//PULL_UP
-#endif
+
+#define KEY HAL_GPIO_ReadPin(GPIOA, BTN_Pin)
+
+#define ACTIVE_HIGH
 
 void keyScan(void);
 __weak void onClick();

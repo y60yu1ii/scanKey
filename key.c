@@ -20,20 +20,27 @@ unsigned char rls = 0x00;
 unsigned char cnt_plus = 0x00;
 unsigned char lock = 0x00;//lock for longpress
 
+
 void keyScan(){
   /**
    * TouchDown trg 1 cnt 1 rls 0
    * Touch     trg 0 cnt 1 rls 0
    * TouchUp   trg 0 cnt 0 rls 1 
    **/
-  unsigned char read = KEY;//pull up resistor
+  #ifdef ACTIVE_HIGH
+  unsigned char read = KEY ^ 0x01;//pull up resistor
+  #else
+  unsigned char read = KEY;
+  #endif
 
+  // unsigned char read = KEY ^ 0x01;//pull down resistor
   trg = read & ( read ^ cnt);
   rls = ~read & ( read ^ cnt);
   cnt = read;//old data
-
   // log_printf("============= keyScan: read %d\n", read);
   // log_printf("============= keyScan: trg %d cnt %d rls %d\n", trg, cnt, rls);
+
+
   if(trg){
     //clear status
     lock = 0x00;
