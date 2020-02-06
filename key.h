@@ -28,6 +28,7 @@ extern "C"
 #define DEBOUNCING 50            //debouncing delay
 #define LONG_PRESS_INTERVAL 5000 //long press delay
 
+//#define KEY digitalRead(PD4)
 #define KEY HAL_GPIO_ReadPin(GPIOA, BTN_Pin)
 
 #define ACTIVE_HIGH
