@@ -18,27 +18,28 @@
 #ifndef __key_H
 #define __key_H
 #ifdef __cplusplus
- extern "C" {
+extern "C"
+{
 #endif
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
-#define DEBOUNCING 50 //debouncing delay
-#define LONG_PRESS_INTERVAL 5000  //long press delay
-
+#define DEBOUNCING 50            //debouncing delay
+#define LONG_PRESS_INTERVAL 5000 //long press delay
 
 #define KEY HAL_GPIO_ReadPin(GPIOA, BTN_Pin)
 
 #define ACTIVE_HIGH
 
-void keyScan(void);
-__weak void onClick();
-__weak void onLongPress();
-// __weak void init();
-// __weak void onClick(uint16_t GPIO_PIN);
-// __weak void onLongPress(uint16_t GPIO_PIN);
-// __weak void onTouch(uint16_t GPIO_PIN);
+  void keyScan(void);
+  __weak void onClick();
+  __weak void onLongPress();
+
+  /** uncomment these if you are using arduino
+__attribute__((weak)) void onClick();
+__attribute__((weak)) void onLongPress();
+*/
 
 #ifdef __cplusplus
 }
